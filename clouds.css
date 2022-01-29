@@ -1,0 +1,134 @@
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  /* width: 100%; */
+  /* background-color: #007ced; */
+  background: linear-gradient(to bottom, #007ced 1%, white 100%);
+  /* min-width: 500px;
+  min-height: 500px; */
+  margin: 0;
+  padding: 0;
+  /* margin: auto; */
+  display: flex;
+  flex-direction: column;
+}
+
+.canvas {
+  position: relative;
+  height: 100vh;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+/* ---- */
+/* FIRST CLOUD STYLING */
+
+.cloud0 {
+  /* filter: blur(4px);
+  opacity: 0.8; */
+  /* position: relative; */
+
+  box-sizing: border-box;
+  animation: float 35s linear infinite;
+}
+
+@keyframes float {
+  from {
+    transform: translate(-500%, 0);
+  }
+  to {
+    transform: translate(500%, 0);
+  }
+}
+
+.bottom {
+  background: white;
+  width: 20vmin;
+  height: 6vmin;
+  border-radius: 100px 120px 130px 130px;
+}
+
+.cloud0-top-left {
+  border-radius: 50%;
+  width: 5vmin;
+  height: 4vmin;
+  transform: translate(1vmin, 3vmin) rotate(-35deg);
+}
+
+.cloud0-top-middle {
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  height: 6vmin;
+  width: 6vmin;
+  transform: translate(-0.5vmin, 1vmin) rotate(-55deg);
+}
+
+.cloud0-top-right {
+  border-top-left-radius: 120px;
+  border-top-right-radius: 100px;
+  transform: translate(-2vmin, 3vmin) rotate(30deg);
+  height: 5vmin;
+  width: 7vmin;
+}
+
+/* ---- */
+/* SECOND CLOUD STYLING */
+
+.cloud1 {
+  box-sizing: border-box;
+}
+.top,
+.top1 {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.top div,
+.top1 div {
+  background: white;
+}
+
+.cloud1-top-left {
+  width: 5vmin;
+  height: 4vmin;
+  border-top-left-radius: 2.5vmin;
+  border-top-right-radius: 2.5vmin;
+  transform: translate(2vmin, 4vmin) rotate(-45deg);
+}
+
+.cloud1-top-middle {
+  border-radius: 6vmin;
+  transform: translate(1vmin, 1.5vmin) rotate(-55deg);
+  width: 8vmin;
+  height: 7vmin;
+}
+
+.cloud1-top-right {
+  border-top-left-radius: 3vmin;
+  border-top-right-radius: 3vmin;
+  transform: translate(-2vmin, 4.25vmin) rotate(45deg);
+  width: 4.5vmin;
+  height: 6vmin;
+}
+
+.bottom1 {
+  background: white;
+  width: 15vmin;
+  height: 4.5vmin;
+  border-radius: 100px;
+}
+
+/* ---- */
+
+div[class^="top"] *,
+div[class^="bottom"] {
+  box-shadow: 0 0 15px 5px white;
+}

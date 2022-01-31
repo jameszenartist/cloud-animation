@@ -35,8 +35,15 @@ body {
   /* position: relative; */
 
   box-sizing: border-box;
+}
+
+.cloud-anim {
   animation: float 35s linear infinite;
 }
+
+/* .reverse {
+  transform: scaleX(-1);
+} */
 
 @keyframes float {
   from {

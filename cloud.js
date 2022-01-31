@@ -1,36 +1,54 @@
-// let clouds = [".cloud0",.cloud1", ".cloud2"];
+// let clouds = [".cloud0",".cloud1"];
 let clouds = [".cloud0", ".cloud1"];
 
-let cloudType = () => Math.floor(Math.random() * clouds.length);
-
-document.querySelector(".canvas").appendChild(createCloud(clouds, cloudType));
+document.querySelector(".canvas").appendChild(createCloud(clouds));
 
 //-----
 
-function createCloud(arr, elem) {
-  let size = (Math.floor(Math.random() * (6 - 3)) + 3) * 0.25;
-  console.log("the size is: ", size);
+function createCloud(arr) {
+  let random;
+  let type = cloudType();
+  let size = cloudSize();
+  random = Math.random() < 0.5;
+  let cloud = createItem("div", arr[type]);
+  console.log("the cloud is: ", arr[type]);
 
-  // let cloud = createItem("div", arr[elem]);
-  let cloud = createItem("div", "cloud0");
   let topSection = createItem("div", "top");
   let bottomSection = createItem("div", "bottom");
   cloud.appendChild(topSection);
   cloud.appendChild(bottomSection);
-  // let c = createSection(elem);
+  // let c = createSection(type);
 
-  let topLeft = createItem("div", "cloud0-top-left");
-  let topMiddle = createItem("div", "cloud0-top-middle");
-  let topRight = createItem("div", "cloud0-top-right");
+  let topLeft = createItem("div", `cloud${type}-top-left`);
+  let topMiddle = createItem("div", `cloud${type}-top-middle`);
+  let topRight = createItem("div", `cloud${type}-top-right`);
 
   topSection.append(topLeft, topMiddle, topRight);
-  const random = Math.random() < 0.5;
+
+  console.log("the size is: ", size);
+  console.log("the random is: ", random);
+
   if (!random) {
-    cloud.style.transform = "scaleX(-1)";
+    cloud.style.transform += `scaleX(-1) scale(${size})`;
+    console.log(cloud);
+  } else {
+    cloud.style.transform += `scale(${size})`;
+    console.log(cloud);
   }
-  cloud.style.transform += `scale(${size})`;
+
+  cloud.classList.add("cloud-anim");
 
   return cloud;
+}
+
+//---
+
+function cloudType() {
+  return Math.floor(Math.random() * clouds.length);
+}
+
+function cloudSize() {
+  return (Math.floor(Math.random() * (6 - 3)) + 3) * 0.25;
 }
 
 function createItem(elem, style) {
@@ -39,14 +57,13 @@ function createItem(elem, style) {
   return result;
 }
 
-function createSection(elem) {
-  let c = [];
-  let num = elem;
-  console.log("The cloudType num is:", num);
-  c[0] = `cloud${num}-top-left`;
-  c[1] = `cloud${num}-top-middle`;
-  c[2] = `cloud${num}-top-right`;
-  return c;
-}
+// function createSection(num) {
+//   let c = [];
+//   console.log("The cloudType num is:", num);
+//   c[0] = `.cloud${num}-top-left`;
+//   c[1] = `.cloud${num}-top-middle`;
+//   c[2] = `.cloud${num}-top-right`;
+//   return c;
+// }
 
 function randomTypeFunc() {}

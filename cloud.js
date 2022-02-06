@@ -1,6 +1,15 @@
 // let clouds = [".cloud0",".cloud1"];
 let clouds = [".cloud0", ".cloud1"];
 
+// let time = 5000;
+let time;
+let timedCloud = function () {
+  time = (Math.floor(Math.random() * (5 - 1)) + 1) * 1000;
+  console.log("the time is:", time);
+  setTimeout(timedCloud, time);
+};
+setTimeout(timedCloud, time);
+
 document.querySelector(".canvas").appendChild(createCloud(clouds));
 
 //-----

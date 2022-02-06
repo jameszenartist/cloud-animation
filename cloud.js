@@ -1,18 +1,25 @@
-// let clouds = [".cloud0",".cloud1"];
 let clouds = [".cloud0", ".cloud1"];
 
 // let time = 5000;
 let time;
-let timedCloud = function () {
-  time = (Math.floor(Math.random() * (5 - 1)) + 1) * 1000;
-  console.log("the time is:", time);
-  setTimeout(timedCloud, time);
-};
-setTimeout(timedCloud, time);
+// let timedCloud = function () {
+//   time = (Math.floor(Math.random() * (5 - 1)) + 1) * 1000;
+//   console.log("the time is:", time);
+//   setTimeout(timedCloud, time);
+// };
+// setTimeout(timedCloud, time);
 
-document.querySelector(".canvas").appendChild(createCloud(clouds));
+let canvas = createItem("div", "canvas");
 
-//-----
+let cloudResult = createCloud(clouds);
+canvas.appendChild(cloudResult);
+let coordinates = coords();
+canvas.style.top = `${coordinates[1]}px`;
+console.log("the cloud coords are: ", coordinates);
+console.log("the cloud y coords are: ", canvas);
+document.querySelector(".container").appendChild(canvas);
+
+//----
 
 function createCloud(arr) {
   let random;
@@ -20,6 +27,7 @@ function createCloud(arr) {
   let size = cloudSize();
   random = Math.random() < 0.5;
   let cloud = createItem("div", arr[type]);
+  cloud.classList.add("cloud");
   console.log("the cloud is: ", arr[type]);
 
   let topSection = createItem("div", "top");
@@ -44,13 +52,10 @@ function createCloud(arr) {
     cloud.style.transform += `scale(${size})`;
     console.log(cloud);
   }
-
   cloud.classList.add("cloud-anim");
 
   return cloud;
 }
-
-//---
 
 function cloudType() {
   return Math.floor(Math.random() * clouds.length);
@@ -74,5 +79,16 @@ function createItem(elem, style) {
 //   c[2] = `.cloud${num}-top-right`;
 //   return c;
 // }
+
+function coords() {
+  let resX =
+    (Math.floor(Math.random() * (20 - 1)) + 1) *
+    Math.floor(window.innerWidth / 20);
+
+  let resY =
+    (Math.floor(Math.random() * (20 - 1)) + 1) *
+    Math.floor(window.innerHeight / 20);
+  return [resX, resY];
+}
 
 function randomTypeFunc() {}

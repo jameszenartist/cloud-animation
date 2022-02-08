@@ -2,6 +2,7 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 .container {
   /* width: 100%; */
@@ -32,12 +33,11 @@ body {
   /* filter: blur(4px);
   opacity: 0.8; */
   /* position: relative; */
-
   box-sizing: border-box;
 }
 
 .cloud-anim {
-  animation: float 15s linear infinite;
+  animation: float 15s linear;
 }
 
 @keyframes float {

@@ -1,6 +1,5 @@
 let clouds = [".cloud0", ".cloud1"];
-
-// let time = 5000;
+let cont = document.querySelector(".container");
 let time;
 // let timedCloud = function () {
 //   time = (Math.floor(Math.random() * (5 - 1)) + 1) * 1000;
@@ -10,13 +9,15 @@ let time;
 // setTimeout(timedCloud, time);
 
 let canvas = createItem("div", "canvas");
+canvas.addEventListener("animationend", () => canvas.remove());
 
 let cloudResult = createCloud(clouds);
 canvas.appendChild(cloudResult);
+
+canvas.classList.add("cloud-anim");
 let coordinates = coords();
 canvas.style.top = `${coordinates[1]}px`;
 console.log("the cloud coords are: ", coordinates);
-console.log("the cloud y coords are: ", canvas);
 document.querySelector(".container").appendChild(canvas);
 
 //----
@@ -52,7 +53,7 @@ function createCloud(arr) {
     cloud.style.transform += `scale(${size})`;
     console.log(cloud);
   }
-  cloud.classList.add("cloud-anim");
+  // cloud.classList.add("cloud-anim");
 
   return cloud;
 }

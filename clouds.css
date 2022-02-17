@@ -36,16 +36,20 @@ body {
   box-sizing: border-box;
 }
 
-.cloud-anim {
-  animation: float 15s linear;
-}
-
-@keyframes float {
+@-webkit-keyframes float {
   from {
-    transform: translate(-500%, 0);
+    margin-left: -20%;
   }
   to {
-    transform: translate(500%, 0);
+    margin-left: 100%;
+  }
+}
+@keyframes float {
+  from {
+    margin-left: -20%;
+  }
+  to {
+    margin-left: 100%;
   }
 }
 

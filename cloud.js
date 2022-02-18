@@ -1,7 +1,9 @@
 let clouds = [".cloud0", ".cloud1"];
+let speeds = [15, 20, 25, 30, 35];
 let cont = document.querySelector(".container");
 let time;
-let speed = 15;
+// speed = 15;
+
 // let timedCloud = function () {
 //   time = (Math.floor(Math.random() * (5 - 1)) + 1) * 1000;
 //   console.log("the time is:", time);
@@ -17,6 +19,8 @@ canvas.appendChild(cloudResult);
 
 canvas.classList.add("cloud-anim");
 let coordinates = coords();
+let speed = speeds[calcSpeed()];
+console.log("the speed is: ", speed);
 canvas.style.top = `${coordinates[1]}px`;
 canvas.style.animation = `float ${speed}s linear`;
 console.log("the cloud coords are: ", coordinates);
@@ -66,6 +70,10 @@ function cloudType() {
 
 function cloudSize() {
   return (Math.floor(Math.random() * (6 - 3)) + 3) * 0.25;
+}
+
+function calcSpeed() {
+  return Math.floor(Math.random() * speeds.length);
 }
 
 function createItem(elem, style) {
